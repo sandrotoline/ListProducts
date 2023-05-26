@@ -1,0 +1,17 @@
+<div class="header">
+    <div class="container">
+        <div class="logo"></div>
+        <div class="menu" (click)="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="content-menu" [ngClass]="showMenu ? 'active' : ''">
+        <ul>
+            <p>Itens </p>
+            <li>Adicionar</li>
+            <li>Listar</li>
+        </ul>
+    </div>
+</div>
