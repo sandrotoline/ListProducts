@@ -23,11 +23,27 @@
     gap: 5px;
     cursor: pointer;
 }
+.menu.close{
+    gap: 0;
+}
 .menu span{
     background: #ccc;
     padding: 2px;
     width: 40px;
     border-radius: 10px;
+    transition: all .2s;
+}
+.menu.close span:nth-child(1){
+    transform: rotate(45deg) translate(2px, 4px);
+    transition: all .2s;
+}
+.menu.close span:nth-child(2){
+   display: none;
+    transition: all .2s;
+}
+.menu.close span:nth-child(3){
+    transform: rotate(-45deg) translate(-2px, 0px);
+    transition: all .2s;
 }
 .content-menu{
     position: absolute;
@@ -50,6 +66,7 @@
     padding: 5px;
     font-size: 1.2rem;
     border-bottom: solid 1px #ccc;
+    font-weight: bold;
 }
 .content-menu ul li{
     list-style: none;

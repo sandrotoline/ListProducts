@@ -1,7 +1,7 @@
 <div class="header">
     <div class="container">
         <div class="logo"></div>
-        <div class="menu" (click)="toggleMenu()">
+        <div class="menu" (click)="toggleMenu()" [ngClass]="showMenu ? 'close' : ''">
             <span></span>
             <span></span>
             <span></span>
