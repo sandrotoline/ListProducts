@@ -1,0 +1,25 @@
+h2{
+    font-weight: bold;
+    margin: 40px 0 20px;
+    font-size: 2.5rem;
+}
+label{
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+.flex-input{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.flex-input:last-child{
+    justify-content: flex-end;
+}
+.flex-input .form-group {
+    flex-grow: 1;
+}
+.flex-input .form-check-inline{
+    align-items: baseline;
+    margin: 5px 0;
+}

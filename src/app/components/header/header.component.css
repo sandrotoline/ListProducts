@@ -4,8 +4,6 @@
     position: relative;
 }
 .container {
-    max-width: 1280px;
-    margin: 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -34,7 +32,7 @@
     transition: all .2s;
 }
 .menu.close span:nth-child(1){
-    transform: rotate(45deg) translate(2px, 4px);
+    transform: rotate(45deg) translate(2.5px, 4px);
     transition: all .2s;
 }
 .menu.close span:nth-child(2){
@@ -42,7 +40,7 @@
     transition: all .2s;
 }
 .menu.close span:nth-child(3){
-    transform: rotate(-45deg) translate(-2px, 0px);
+    transform: rotate(-45deg) translate(-2.5px, 0px);
     transition: all .2s;
 }
 .content-menu{
@@ -53,6 +51,7 @@
     width: 320px;
     transition: all .2s;
     height: calc(100vh - 70px);
+    z-index: 9999;
 }
 .content-menu.active{
     left: 0px;
