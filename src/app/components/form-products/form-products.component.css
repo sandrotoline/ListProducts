@@ -23,3 +23,7 @@ label{
     align-items: baseline;
     margin: 5px 0;
 }
+label span{
+    color: rgb(212, 1, 1);
+    font-weight: 300;
+}

@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ListProductsComponent } from "./components/list-products/list-products.component";
@@ -9,14 +10,18 @@ const routes : Routes = [
         component: ListProductsComponent
     },
     {
-        path: 'product',
+        path: 'item',
+        component: FormProductsComponent
+    },
+    {
+        path: 'item/:id/editar',
         component: FormProductsComponent
     }
 ]
 
 @NgModule ({
     declarations:[],
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes), ReactiveFormsModule],
     exports: [RouterModule]
 })
 
