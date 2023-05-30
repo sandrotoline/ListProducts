@@ -10,10 +10,12 @@
     align-items: center;
 }
 .logo{
-    height: 50px;
-    width: 100px;
-    background-color: #0ed;
     display: block;
+}
+.logo i{
+    font-size: 4rem;
+    color: #fff;
+    cursor: pointer;
 }
 .menu{
     display: flex;
@@ -45,12 +47,12 @@
 }
 .content-menu{
     position: absolute;
-    top: 70px;
+    top: 84px;
     left: -320px;
     background-color: #363636;
     width: 320px;
     transition: all .2s;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 84px);
     z-index: 9999;
 }
 .content-menu.active{

@@ -11,3 +11,16 @@ h2{
 .d-flex{
     margin: 40px 0 20px;
 }
+.btn.btn-danger{
+    margin-left: .5rem ;
+}
+
+@media (max-width: 455px)
+{
+    h2{
+        font-size: 1.75rem;
+    }
+    .btn.btn-danger{
+        margin-top: .5rem ;
+    }
+}
