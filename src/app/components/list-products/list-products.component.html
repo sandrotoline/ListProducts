@@ -17,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngIf="itens?.length == 0; else tableSuccess">
+          <tr *ngIf="itens == null; else tableSuccess">
             <th colspan="7">
               <h3 class="text-center">Sem itens cadastrados</h3>
             </th>
