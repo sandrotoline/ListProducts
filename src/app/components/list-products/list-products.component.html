@@ -27,9 +27,13 @@
               <td>{{item.name}}</td>
               <td>R$ {{item.price}}</td>
               <td class="text-right">{{item.qtd}} {{item.un}}</td>
-              <td class="text-right">{{item.IsPerecivel == true ? 'Sim' : 'Não'}}</td>
+              <td class="text-right">
+                <i class="fa {{item.IsPerecivel ? 'fa-check' : 'fa-xmark'}}"></i>
+              </td>
               <td class="text-right">{{item.fab | date : 'dd/MM/yyyy'}}</td>
-              <td class="text-right">{{item.val | date : 'dd/MM/yyyy'}}</td>
+              <td class="text-right">
+                {{item.IsPerecivel ? (item.val | date : 'dd/MM/yyyy') : ' Não perecivel '}}
+              </td>
               <td class="text-right">
                 <button class="btn btn-secondary" (click)="updateItem(item)"><i class="fa fa-pencil"></i></button>
                 <button class="btn btn-danger" (click)="deleteItem(item)"><i class="fa fa-trash"></i></button>
