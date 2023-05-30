@@ -1,27 +1,36 @@
-# Products
+# Lista de produto em Local Storage
+<div>
+  <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white"/>
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"/>
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"/>
+</div>
+<hr/>
+Primeiro app feito em Angular, como forma de aprendizado e estudo.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
+Qualquer dúvida, comentário ou sugestão.
+<div>
+  <a href="https://instagram.com/t0line" target="_blank"><img src="https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank"></a>
+  <a href = "mailto:sandro.toline@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+  <a href="https://www.linkedin.com/in/sandro-toline-149997115/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
+</div>
 
-## Development server
+---
+> ### ([Demo](https://list-products-it0zfre9z-sandrotoline.vercel.app/))
+![image](https://github.com/sandrotoline/ListProducts/assets/25992583/33ed00d6-89b1-446c-8c6e-97c752004920)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Vai rodar localmente?
+`npm install` para instalar todas as dependências.</br>
+`ng serve` para subir a aplicação.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+#### Considerações do autor
+- Foi utilizado`localStorage` para o armazenamento de dados.
+- Todo CSS foi utlizado FlexBox para que o mesmo ficasse resposivo, se adptando a quaisquer ambiente.
+- Foi utlizado algumas classes <a href="https://getbootstrap.com/">bootstrap 4.0</a> como `form-control` `table-responsive` `invalid-feedback` em forma de auxilio.
+- Para tornar a aplicação mais interativa e demonstrar suas funcionalidades foi utilizado também a biblioteca de alerta`sweetalert`.
+- Para a máscara do input `preço` foi utilizado `inputmask`
+- O menu lateral fica com status oculto inicialmente, aproveitando melhor o espaço da tela. No header foi adicionado um botão ao estilo `burguer menu` para exibir/ocultar o sidebar. 
+- Foi realizado o deploy direto no vercel
