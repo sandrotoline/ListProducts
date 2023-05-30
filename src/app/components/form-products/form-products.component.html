@@ -1,10 +1,13 @@
 <div class="container">
-    <h2>Item</h2>
+    <div class="d-flex">
+        <h2>Item</h2>
+    </div>
+    
     <hr>
     <form [formGroup]="formItem" (ngSubmit)="cadastrarItem()" #formDir="ngForm">
         <div class="form-group">
             <label for="nameProduct">Nome <span>*</span></label>
-            <input type="text" class="form-control" id="nameProduct" placeholder="Nome do produto"  maxlength="50" formControlName="name" required>
+            <input type="text" class="form-control" id="nameProduct" placeholder="Nome do item"  maxlength="50" formControlName="name" [ngClass]="name.invalid && formDir.submitted ? 'is-invalid' : ''">
             <div *ngIf="name.invalid && formDir.submitted" class="invalid-feedback">
                 <p *ngIf="name.errors?.['required']">Campo obrigatório!</p>
             </div>
@@ -16,26 +19,36 @@
                     <div class="input-group-prepend">
                     <span class="input-group-text">R$</span>
                     </div>
-                    <input type="text" class="form-control" id="price" formControlName="price" mask='R$ 999.999.999,99' required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="qtd">Quantidade <span>*</span></label>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="qtd" formControlName="qtd" required>
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="qtd">Un</span>
+                    <input type="text" class="form-control" id="price" formControlName="price" [ngClass]="price.invalid && formDir.submitted ? 'is-invalid' : ''" maxlength="24">
+                    <div *ngIf="price.invalid && formDir.submitted" class="invalid-feedback">
+                        <p *ngIf="price.errors?.['required']">Campo obrigatório!</p>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="unidade">Unidade <span>*</span></label>
-                <select class="custom-select" id="unidade" formControlName="un" required>
+                <select (change)="changeMedida()" class="custom-select" id="unidade" formControlName="un" [ngClass]="un.invalid && formDir.submitted ? 'is-invalid' : ''">
                     <option selected value="Un">Unidades (Un)</option>
                     <option value="lt">Litros (lt)</option>
                     <option value="kg">Quilogramas (kg)</option>
                 </select>
+                <div *ngIf="un.invalid && formDir.submitted" class="invalid-feedback">
+                    <p *ngIf="un.errors?.['required']">Campo obrigatório!</p>
+                </div>
             </div>
+            <div class="form-group">
+                <label for="qtd">Quantidade <span>*</span></label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="qtd" formControlName="qtd" required max="999" [ngClass]="qtd.invalid && formDir.submitted ? 'is-invalid' : ''">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="qtd">{{medida}}</span>
+                    </div>
+                    <div *ngIf="qtd.invalid && formDir.submitted" class="invalid-feedback">
+                        <p *ngIf="qtd.errors?.['required']">Campo obrigatório!</p>
+                    </div>
+                </div>
+            </div>
+            
         </div>
         <div class="flex-input">
             <div class="form-check form-check-inline">
@@ -46,11 +59,20 @@
         <div class="flex-input">
             <div class="form-group">
                 <label for="fab">Data de fabricação <span>*</span></label>
-                <input type="date" class="form-control" id="fab" formControlName="fab">
+                <input (change)="verificarDataFab()" type="date" class="form-control" id="fab" formControlName="fab" [ngClass]="dataFabInvalid || (fab.invalid && formDir.submitted) ? 'is-invalid' : ''">
+                <div *ngIf="fab.invalid && formDir.submitted" class="invalid-feedback">
+                    <p *ngIf="fab.errors?.['required']">Campo obrigatório!</p>
+                </div>
+                <div *ngIf="dataFabInvalid" class="invalid-error">
+                   Data Inválida
+                </div>
             </div>
             <div class="form-group" *ngIf="showPerecivel">
-                <label for="val">Data de validade</label>
-                <input type="date" class="form-control" id="val" formControlName="val">
+                <label for="val">Data de validade <span>*</span></label>
+                <input (change)="verificarDataVal()" type="date" class="form-control" id="val" formControlName="val" (change)="verificarDataFab()" [ngClass]="dataValInvalid ? 'is-invalid' : ''">
+                <div *ngIf="dataValInvalid" class="invalid-error">
+                    Data Inválida
+                 </div>
             </div>
         </div>
         <div class="flex-input">

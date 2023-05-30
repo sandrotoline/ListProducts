@@ -1,5 +1,8 @@
 <div class="container">
-  <h2>Lista de Itens</h2>
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>Lista de Itens</h2>
+    <button class="btn btn-primary btn-cadastrar" type="button" (click)="cadastrarNovoItem()">Cadastrar <i class="fa fa-plus"></i></button>
+  </div>
     <div class="table-responsive">
       <table class="table">
         <thead class="thead-light">
@@ -22,13 +25,14 @@
           <ng-template #tableSuccess>
             <tr *ngFor="let item of itens">
               <td>{{item.name}}</td>
-              <td>{{item.price | currency:'BRL'}}</td>
+              <td>R$ {{item.price}}</td>
               <td class="text-right">{{item.qtd}} {{item.un}}</td>
               <td class="text-right">{{item.IsPerecivel == true ? 'Sim' : 'Não'}}</td>
               <td class="text-right">{{item.fab | date : 'dd/MM/yyyy'}}</td>
               <td class="text-right">{{item.val | date : 'dd/MM/yyyy'}}</td>
               <td class="text-right">
                 <button class="btn btn-secondary" (click)="updateItem(item)"><i class="fa fa-pencil"></i></button>
+                <button class="btn btn-danger ml-2" (click)="deleteItem(item)"><i class="fa fa-trash"></i></button>
               </td>
             </tr>
           </ng-template>

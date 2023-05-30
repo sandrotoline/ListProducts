@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Guid } from 'guid-typescript';
 import Swal from 'sweetalert2'
 import { Router, ActivatedRoute } from '@angular/router';
+import Inputmask from 'inputmask';
 
 
 
@@ -14,12 +15,57 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class FormProductsComponent {
   constructor(private router: Router, private route: ActivatedRoute) { }
-
+    
+    inputmask: any;
     itens! :Item[];
     formItem! : FormGroup;
-
     showPerecivel:boolean= false;
+    dataFabInvalid!: boolean;
+    dataValInvalid!: boolean;
+    dataFab!: string;
+    dataVal!: string;
+    dataAtual!: Date;
+    medida! : string;
 
+    toggleInputPerecivel() {
+      this.showPerecivel = !this.showPerecivel;
+    }
+
+    ngAfterViewInit() {
+      this.inputmask = new Inputmask('decimal', {
+                'alias': 'numeric',
+                'groupSeparator': '.',
+                'digits': 2,
+                'radixPoint': ",",
+                'digitsOptional': true,
+                'allowMinus': false,
+                'placeholder': ''});
+      this.inputmask.mask(document.getElementById('price'));
+    }
+    changeMedida(){
+      this.medida =  this.formItem.get('un')?.value;
+    }
+    verificarDataFab() {
+      this.dataAtual = new Date(); // Obter a data atual
+      this.dataFab =  this.formItem.get('fab')?.value;
+
+      if (new Date(this.dataFab) > this.dataAtual) {
+        this.dataFabInvalid = true;
+      } else {
+        this.dataFabInvalid = false;
+      }
+    }
+    verificarDataVal() {
+      this.dataAtual = new Date(); // Obter a data atual
+      this.dataVal =  this.formItem.get('val')?.value;
+
+      if (new Date(this.dataVal) < this.dataAtual) {
+        this.dataValInvalid = true;
+      } else {
+        this.dataValInvalid = false;
+      }
+    }
+  
     ngOnInit(){
 
       if(localStorage.getItem('dbItens')){
@@ -31,6 +77,7 @@ export class FormProductsComponent {
         this.route.params.subscribe(params => {
           const id = params['id'];
           const data = this.itens.find(x => x.id === id);
+          this.showPerecivel = data?.IsPerecivel!;
           this.formItem = new FormGroup({ 
             id: new FormControl(id),
             name: new FormControl(data?.name, [Validators.required]),
@@ -73,10 +120,8 @@ export class FormProductsComponent {
       return this.formItem.get('fab')!;
     }
 
-    toggleInputPerecivel() {
-      this.showPerecivel = !this.showPerecivel;
-    }
-    cancelar(e:Event){
+
+  cancelar(e:Event){
       e.stopPropagation();
 
       Swal.fire({
@@ -93,28 +138,32 @@ export class FormProductsComponent {
           this.router.navigateByUrl('/');
         }
       })
-    }
+  }
 
     
     cadastrarItem() {
-      if(this.formItem.invalid){
-        Swal.fire({
-          title: 'Erro !',
-          text: 'Existem campos a serem preenchidos.',
-          icon: 'error',
-          timer: 3000,
-          showConfirmButton: false,
-        })
-      }
-
-
+    if(this.formItem.invalid){
+      console.log('Formulario Invalido');
+      return ;
+    }
+    else if(this.showPerecivel && this.formItem.get('val')?.value == null){
+      console.log('é percecivel e nao tem data');
+      return ;
+    }else if(this.dataFabInvalid){
+      console.log('Data de Fabricação Invalida');
+      return ;
+    } else if(this.dataValInvalid){
+      console.log('Data de Validade Invalida');
+      return ;
+    }else{
       if(this.route.snapshot.url.join('/').includes('/editar')){
+        
         this.route.params.subscribe(params => {
           this.formItem.value.id = params['id'];
           const item : Item = this.formItem.value;
           this.itens[this.itens.findIndex(x => x.id ===  params['id'])] = item;
           localStorage.setItem("dbItens", JSON.stringify(this.itens));
-         
+        
           Swal.fire({
             title: 'Alterado',
             text: 'Seu item foi alterado com sucesso.',
@@ -123,13 +172,14 @@ export class FormProductsComponent {
             showConfirmButton: false,
           })
         });
-
       }else{
+
         this.formItem.value.id = Guid.create().toString();
         const item : Item = this.formItem.value;
         this.itens.push(item);
         localStorage.setItem("dbItens", JSON.stringify(this.itens));
         this.formItem.reset();
+
         Swal.fire({
           title: 'Inserido',
           text: 'Seu item foi inserido com sucesso.',
@@ -138,7 +188,9 @@ export class FormProductsComponent {
           showConfirmButton: false,
         })
       }
-
     }
+    
+    }
+    
 
 }

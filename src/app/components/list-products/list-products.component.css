@@ -1,8 +1,13 @@
 h2{
     font-weight: bold;
-    margin: 40px 0 20px;
     font-size: 2.5rem;
 }
 .table td, .table th {
     vertical-align: baseline;
+}
+.btn-cadastrar{
+    height: 50px;
+}
+.d-flex{
+    margin: 40px 0 20px;
 }

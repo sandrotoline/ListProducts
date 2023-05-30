@@ -27,3 +27,9 @@ label span{
     color: rgb(212, 1, 1);
     font-weight: 300;
 }
+.invalid-error{
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
