@@ -78,6 +78,7 @@ export class FormProductsComponent {
           const id = params['id'];
           const data = this.itens.find(x => x.id === id);
           this.showPerecivel = data?.IsPerecivel!;
+          this.medida = data?.un!;
           this.formItem = new FormGroup({ 
             id: new FormControl(id),
             name: new FormControl(data?.name, [Validators.required]),
