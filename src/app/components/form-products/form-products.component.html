@@ -39,7 +39,7 @@
             <div class="form-group">
                 <label for="qtd">Quantidade <span>*</span></label>
                 <div class="input-group">
-                    <input type="number" class="form-control" id="qtd" formControlName="qtd" required max="999" [ngClass]="qtd.invalid && formDir.submitted ? 'is-invalid' : ''">
+                    <input type="number" class="form-control" id="qtd" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" formControlName="qtd" required max="999" [ngClass]="qtd.invalid && formDir.submitted ? 'is-invalid' : ''">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="qtd">{{medida}}</span>
                     </div>

@@ -33,13 +33,13 @@ export class FormProductsComponent {
 
     ngAfterViewInit() {
       this.inputmask = new Inputmask('decimal', {
-                'alias': 'numeric',
-                'groupSeparator': '.',
-                'digits': 2,
-                'radixPoint': ",",
-                'digitsOptional': true,
-                'allowMinus': false,
-                'placeholder': ''});
+              prefix: "",
+              groupSeparator: ".",
+              alias: "numeric",
+              digits: 2,
+              radixPoint: ",",
+              digitsOptional: !1
+            });
       this.inputmask.mask(document.getElementById('price'));
     }
     changeMedida(){
@@ -188,6 +188,7 @@ export class FormProductsComponent {
           timer: 3000,
           showConfirmButton: false,
         })
+        setTimeout(()=>{this.router.navigateByUrl('/');}, 3000)
       }
     }
     
