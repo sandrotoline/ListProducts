@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"/>
 </div>
 <hr/>
-Primeiro app feito em Angular, como forma de aprendizado e estudo.
+Primeiro app feito em Angular.
 
 Qualquer dúvida, comentário ou sugestão.
 <div>
