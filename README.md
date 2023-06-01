@@ -17,7 +17,7 @@ Qualquer dúvida, comentário ou sugestão.
 </div>
 
 ---
-> ### ([Demo](https://list-products-it0zfre9z-sandrotoline.vercel.app/))
+> ### ([Demo](list-products-chi.vercel.app/)
 ![image](https://github.com/sandrotoline/ListProducts/assets/25992583/33ed00d6-89b1-446c-8c6e-97c752004920)
 
 
